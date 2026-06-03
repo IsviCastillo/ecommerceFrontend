@@ -10,6 +10,9 @@ import OrdersView from "./views/OrdersView.vue";
   <h1 class="text-6xl font-bold text-center mb-16">
   Ecommerce Dashboard
 </h1>
+<button class="btn btn-primary" style="margin-bottom: 20px;">
+  Botón de prueba
+</button>
 
 
   <div class="min-h-screen bg-base-200 p-10">

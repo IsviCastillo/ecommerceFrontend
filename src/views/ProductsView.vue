@@ -1,25 +1,27 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+
+import { ref, onMounted } from "vue";
 
 import api from "../services/api";
 
-import CategoryCard from "../components/CategoryCard.vue";
+import ProductCard from "../components/ProductCard.vue";
 
-interface Category {
+interface Product {
   id: string;
   nombre: string;
-  descripcion: string;
+  precio: number;
+  imagen: string;
 }
 
-const categories = ref<Category[]>([]);
+const products = ref<Product[]>([]);
 
 onMounted(async () => {
 
   try {
 
-    const response = await api.get("/categories");
+    const response = await api.get("/products");
 
-    categories.value = response.data.data;
+    products.value = response.data.data;
 
   } catch (error) {
 
@@ -28,25 +30,24 @@ onMounted(async () => {
   }
 
 });
+
 </script>
 
 <template>
 
-  <div class="container mx-auto">
+  <div>
 
-    <h1 class="text-5xl font-bold mb-10 text-center">
-  Categorías
-</h1>
+    <h1 class="text-4xl font-bold mb-8 text-center">
+      Productos
+    </h1>
 
-    <div class="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-
-      <CategoryCard
-        v-for="category in categories"
-        :key="category.id"
-        :category="category"
-      />
-
-    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <ProductCard
+    v-for="product in products"
+    :key="product.id"
+    :product="product"
+  />
+</div>
 
   </div>
 

@@ -14,9 +14,9 @@ defineProps<{
 
 <template>
 
-  <div class="overflow-x-auto">
+  <div class="overflow-x-auto w-full">
 
-    <table class="table table-zebra bg-white rounded-xl">
+    <table class="table table-zebra w-full">
 
       <thead>
 
